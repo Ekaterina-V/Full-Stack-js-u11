@@ -1,2 +1,31 @@
-Welcome to the Family Bakery Application!
-<router-outlet></router-outlet>
+<div id="app">
+  <nav class="navbar navbar-expand navbar-dark header">
+    <a href="#" class="navbar-brand">Family Bakery</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="home">Home </a>
+      </li>
+      <li class="nav-item">
+        <a href="/moderator" class="nav-link" routerLink="home"
+          >Moderator content</a
+        >
+      </li>
+      <li class="nav-item">
+        <a href="/admin" class="nav-link" routerLink="home">Admin content</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
