@@ -1,0 +1,42 @@
+div { 
+  display: block;
+}
+
+.options { 
+  label:first-child 
+  { 
+    width: 60%; 
+  }
+}
+
+.checkout-contents { 
+  padding-left: 0; 
+  list-style: none;
+}
+
+.item-size { 
+  width: 60%;
+}
+
+.item-quantity { 
+  width: 40%;
+}
+
+* { 
+  box-sizing: border-box;
+}
+
+.img-order-cart { 
+  max-height: 100%; 
+  max-width: 100%; 
+  height: auto; 
+  width: auto;
+}
+
+.img-order-cart-box { 
+  height: 90px;
+}
+
+.btn-secondary { 
+  background: #84dcc6;
+}
