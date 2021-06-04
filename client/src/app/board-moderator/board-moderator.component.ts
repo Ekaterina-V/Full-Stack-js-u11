@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { ProductService } from '../services/product.service';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-board-moderator',
@@ -7,19 +8,39 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./board-moderator.component.css']
 })
 export class BoardModeratorComponent implements OnInit {
-  content?: string;
 
-  constructor(private userService: UserService) { }
+  product: Product = {};
+  submitted = false;
 
-  ngOnInit(): void {
-    this.userService.getModeratorBoard().subscribe(
-      (      data: string | undefined) => {
-        this.content = data;
-      },
-      (      err: { error: string; }) => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+  constructor(private productService: ProductService) { }
+
+  ngOnInit(): void { }
+
+  saveProduct(): void {
+    const data = {
+      title: this.product.title,
+      price: this.product.price,
+      description: this.product.description
+    };
+
+    this.productService.create(data)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.submitted = true;
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  newProduct(): void {
+    this.submitted = false;
+    this.product = {
+      title: '',
+      //price: ,
+      description: '',
+    };
   }
 
 }
