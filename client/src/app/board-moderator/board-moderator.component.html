@@ -1,11 +1,7 @@
-<div class="container add-product">
-  <p>Here would be placed moderator content{{ content }}</p>
-  <h5>Add new product to the database</h5>
-</div>
-
-<div>
+<div class="container-add-product my-5">
+  <h3 class="text-center">Add new product to the database</h3>
   <div class="submit-form">
-    <div>
+    <div *ngIf="!submitted">
       <div class="form-group">
         <label for="title">Title</label>
         <input
@@ -13,6 +9,7 @@
           class="form-control"
           id="title"
           required
+          [(ngModel)]="product.title"
           name="title"
         />
       </div>
@@ -23,21 +20,29 @@
           class="form-control"
           id="title"
           required
+          [(ngModel)]="product.price"
           name="title"
         />
       </div>
-
       <div class="form-group">
         <label for="description">Description</label>
         <input
           class="form-control"
           id="description"
           required
+          [(ngModel)]="product.description"
           name="description"
         />
       </div>
-
-      <button class="btn btn-success">Submit</button>
+      <button (click)="saveProduct()" class="btn btn-block btn-success">
+        Submit
+      </button>
+    </div>
+    <div *ngIf="submitted">
+      <h5 class="text-center my-5">Product was submitted</h5>
+      <button class="btn btn-block btn-success my-5" (click)="newProduct()">
+        Add more products
+      </button>
     </div>
   </div>
 </div>
