@@ -36,9 +36,12 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the Family Bakery application.' });
 });
 
+// add routes
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
+require('./routes/product.routes')(app);
 
+// set port
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
