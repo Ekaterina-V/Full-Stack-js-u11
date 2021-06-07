@@ -1,4 +1,5 @@
 const db = require('../models');
+
 const Product = db.product;
 
 // Create new product
@@ -24,6 +25,20 @@ exports.create = (req, res) => {
       res.status(500).send({
         message:
           err.message || 'Some error occurred while creating the product.',
+      });
+    });
+};
+
+// Show all products from the database.
+exports.getAll = (req, res) => {
+  Product.find({})
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || 'Some error occurred while showing products.',
       });
     });
 };
