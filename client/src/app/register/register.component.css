@@ -1,4 +1,9 @@
 
+.container {
+  max-width: 400px;
+  margin: auto;
+}
+
 .card-container {
   background-color: rgba(250, 235, 215, 0.336);
   width: 300px;
