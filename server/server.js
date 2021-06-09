@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const dbConfig = require('./config/db.config');
+const path = require('path')
+const dbConfig = require('./config/keys');
 
 const app = express();
 
@@ -81,4 +82,16 @@ function initial() {
       });
     }
   });
+}
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/dist/client'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(
+      path.resolve(
+        __dirname, 'client', 'dist', 'client', 'index.html'
+      )
+    )
+  })
 }
