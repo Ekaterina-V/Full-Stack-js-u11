@@ -6,7 +6,7 @@ const dbConfig = require('./config/keys');
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:4200',
+  origin: 'http://localhost:80',
 };
 
 app.use(cors(corsOptions));
@@ -39,7 +39,7 @@ require('./routes/user.routes')(app);
 require('./routes/product.routes')(app);
 
 // set port
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
