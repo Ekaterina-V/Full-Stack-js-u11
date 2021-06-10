@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment'
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -8,7 +9,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductService {
-  private API_URL = 'http://localhost:4000/api/bakery/product';
+  private API_URL = environment.baseUrl + '/bakery/product';
 
 
   constructor(private http: HttpClient) { }

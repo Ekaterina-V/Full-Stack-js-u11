@@ -6,7 +6,7 @@ const dbConfig = require('./config/keys');
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:4200',
+  origin: 'http://localhost:80',
 };
 
 app.use(cors(corsOptions));
@@ -33,17 +33,13 @@ db.mongoose
     process.exit();
   });
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to the Family Bakery application.' });
-});
-
 // add routes
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 require('./routes/product.routes')(app);
 
 // set port
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
@@ -84,14 +80,12 @@ function initial() {
   });
 }
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/dist/client'))
+app.use(express.static(path.join(__dirname, '../client/dist/client')));
 
-  app.get('*', (req, res) => {
-    res.sendFile(
-      path.resolve(
-        __dirname, 'client', 'dist', 'client', 'index.html'
-      )
-    )
-  })
-}
+app.get('/*', (req, res) => {
+  res.sendFile(
+    path.resolve(
+      __dirname, '..', 'client', 'dist', 'client', 'index.html'
+    ),
+  );
+});
