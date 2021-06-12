@@ -1,16 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path')
+const path = require('path');
 const dbConfig = require('./config/keys');
 
 const app = express();
 
-const corsOptions = {
-  origin: 'http://localhost:80',
-};
-
-app.use(cors(corsOptions));
-
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -37,6 +32,7 @@ db.mongoose
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 require('./routes/product.routes')(app);
+require('./routes/time.routes')(app);
 
 // set port
 const PORT = process.env.PORT || 80;
