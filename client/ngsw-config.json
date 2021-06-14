@@ -26,5 +26,17 @@
         ]
       }
     }
-  ]
+  ],
+  "dataGroups": [
+    {
+      "name": "bakeryApi",
+      "urls": ["http://localhost:80/**"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxAge": "2h",
+        "timeout": "5s",
+        "maxSize": 20
+      }
+    }
+ ]
 }
