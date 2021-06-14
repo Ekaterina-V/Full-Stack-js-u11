@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
 import { TokenStorageService } from './services/token-storage.service';
 
 @Component({
@@ -15,7 +16,14 @@ export class AppComponent implements OnInit {
   showCart = false;
   username?: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService, updates: SwUpdate) { 
+    updates.available.subscribe(event => {
+      updates.activateUpdate().then(() => { 
+        document.location.reload();
+      });
+    })
+  
+  }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
