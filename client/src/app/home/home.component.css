@@ -8,3 +8,8 @@
 .img-product-box {
   height: 200px;
 }
+
+.img {
+  width: 600; 
+  height: 400;
+}
